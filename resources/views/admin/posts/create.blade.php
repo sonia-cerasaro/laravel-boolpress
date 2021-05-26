@@ -9,19 +9,7 @@
       </h3>
     </div>
   </div>
-  @if ($errors->any())
-  <div class="row justify-content-center">
-    <div class="coll-md-8">
-      <div class="alert alert-danger">
-          <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-       </div>
-     </div>
-   </div>
-  @endif
+
     <div class="row justify-content-center">
         <div class="col-md-8">
 
@@ -33,16 +21,26 @@
               <label for="title">
                 Title
               </label>
-              <input class="form-control" id="title" type="text" name="title" value="{{ old('title') }}">
+              <input class="form-control @error('title') is-invalid @enderror" id="title" type="text" name="title" value="{{ old('title') }}">
+              @error('title')
+                <small class="text-danger">
+                  {{ $message }}
+                </small>
+              @enderror
             </div>
 
             <div class="form-group">
               <label for="content">
                 Content
               </label>
-              <textarea class="form-control" id="content" name="content">
+              <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content">
                 {{ old('content') }}
               </textarea>
+              @error('content')
+                <small class="text-danger">
+                  {{ $message }}
+                </small>
+              @enderror
             </div>
 
             <button class="btn btn-primary" type="submit">
