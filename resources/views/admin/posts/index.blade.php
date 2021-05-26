@@ -24,5 +24,4 @@
       @endforeach
     </div>
 </div>
-
 @endsection
