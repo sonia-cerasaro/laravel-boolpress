@@ -14,7 +14,7 @@ class UpdatePostsTable extends Migration
     public function up()
     {
       Schema::table('posts', function (Blueprint $table) {  //Questo code serve per creare una foreign Key verso la cartella category
-        $table->unsignedBigInteger('category_id');
+        $table->unsignedBigInteger('category_id')->after('slug')->nullable();
 
         $table->foreign('category_id')
         ->references('id')
