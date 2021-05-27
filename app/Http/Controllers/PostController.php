@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+  public function index()
+  {
+    $posts = Post::all();
+    return view('guest.posts.index', compact('posts'));
+  }
   public function show(string $slug) {
-    $slug = Post::where('slug', '=', $slug)->first();
+    $post = Post::where('slug', '=', $slug)->first();
 
-    return view('guests.posts.show', compact('posts'));
+    return view('guests.posts.show', compact('post'));
   }
 }

@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
           {{$post->content}}
-          <a href="route('posts.show', ['slug =>$post->slug'])">
+          <a href=" {{route('posts.show', ['slug =>$post->slug'])}} ">
             Read More
           </a>
         </div>
