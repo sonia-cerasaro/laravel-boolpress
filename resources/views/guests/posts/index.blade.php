@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
+    @foreach ($posts as $post)
     <div class="col-md-3">
       <div class="card">
         <div class="card-header">
@@ -13,11 +14,10 @@
           <a href="route('posts.show', ['slug =>$post->slug'])">
             Read More
           </a>
-          <a href="{{route('posts.index')}}">Back</a>
-          <a href="{{route('home')}}">Home</a>
         </div>
       </div>
     </div>
+    @endforeach
   </div>
 </div>
 @endsection

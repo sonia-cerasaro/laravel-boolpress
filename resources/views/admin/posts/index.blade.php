@@ -23,8 +23,11 @@
                       Edit
                     </a>
                   </div>
-
-
+                  <form class="" action="{{route('admin.posts.destroy', ['post'=>$post->id])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="delete">
+                  </form>
                 </div>
             </div>
         </div>
