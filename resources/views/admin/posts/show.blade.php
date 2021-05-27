@@ -10,11 +10,11 @@
         </div>
         <div class="card-body">
           {{$post->content}}
-          <a href="route('posts.show', ['slug =>$post->slug'])">
+          <a href="route('admin.posts.show', ['slug =>$post->slug'])">
             Read More
           </a>
-          <a href="{{route('posts.index')}}">Back</a>
-          <a href="{{route('home')}}">Home</a>
+          <a href="{{route('admin.posts.index')}}">Back</a>
+        
         </div>
       </div>
     </div>
