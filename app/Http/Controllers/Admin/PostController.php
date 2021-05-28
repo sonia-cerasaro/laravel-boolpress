@@ -55,7 +55,6 @@ class PostController extends Controller
       $post->fill($data);
 
 
-
       $post->slug = $this->generateSlug($post->title);
       $post->save();
 

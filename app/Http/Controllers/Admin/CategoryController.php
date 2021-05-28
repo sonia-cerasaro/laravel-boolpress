@@ -62,7 +62,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-      return view('admin.categories.show', compact($category));
+      return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -124,12 +124,12 @@ class CategoryController extends Controller
       $slug_base = $slug;
       $contatore = 1;
 
-      $post_with_slug = Post::where('slug', '=', $slug)->first();
+      $post_with_slug = Category::where('slug', '=', $slug)->first();
       while($post_with_slug) {
         $slug = $slug_base . '_' . $contatore;
         $contatore++;
 
-      $post_with_slug = Post::where('slug', '=', $slug)->first();
+      $post_with_slug = Category::where('slug', '=', $slug)->first();
       }
       return $slug;
     }
