@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Post;
 
-class CategoryControlle extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,7 @@ class CategoryControlle extends Controller
      */
     public function index()
     {
-      $categories = Category:all();
+      $categories = Category::all();
 
       return view('admin.categories.index', compact('categories'));
 
@@ -40,7 +42,7 @@ class CategoryControlle extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'name' => 'required|string|max:255'
+        'name' => 'required|string|max:255',
       ]);
 
       $data = $request->all();
@@ -84,7 +86,7 @@ class CategoryControlle extends Controller
     public function update(Request $request, Category $category)
     {
       $request->validate([
-        'name' => 'required|string|max:255'
+        'name' => 'required|string|max:255',
       ]);
 
       $data = $request->all();
