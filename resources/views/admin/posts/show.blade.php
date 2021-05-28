@@ -8,9 +8,10 @@
         <div class="card-header">
           {{ $post->title}}
         </div>
+        <h3>Category: <a href="">{{$post->category->name}}</a></h3>
         <div class="card-body">
           {{$post->content}}
-        
+
           <a href="{{route('admin.posts.index')}}">
             Back
           </a>

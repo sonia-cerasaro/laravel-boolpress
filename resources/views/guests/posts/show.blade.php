@@ -8,6 +8,7 @@
         <div class="card-header">
           {{ $post->title}}
         </div>
+        <h3>Category: <a href="{{route('category.index', ['slug' => $post->category->slug])}}">{{$post->category->name}}</a></h3>
         <div class="card-body">
           {{$post->content}}
 
