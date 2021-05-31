@@ -53,14 +53,17 @@ class PostController extends Controller
 
       $data = $request->all();
 
-      $cover = Storage::put('uploads', $data['cover']);
+      $cover = NULL;
+      if (array_key_exists('cover', $data)) {
+        $cover = Storage::put('uploads', $data['cover']);
+      }
 
       $post = new Post();
       $post->fill($data);
 
 
       $post->slug = $this->generateSlug($post->title);
-      $post->cover = $cover;
+      $post->cover = 'storage/'.$cover;
       $post->save();
 
       return redirect()->route('admin.posts.index');
@@ -99,18 +102,24 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
       $request->validate([
+        'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
-        'content' => 'required|string'
+        'content' => 'required|string',
+        'cover' => 'image|max:60|nullable',
       ]);
 
       $data = $request->all();
 
       $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title'], $post->slug);
 
+      if (array_key_exists('cover', $data)) {
+        $cover = Storage::put('uploads', $data['cover']);
+        $data['cover'] = 'storage/'.$cover;
+      }
+
       $post->update($data);
 
       return redirect()->route('admin.posts.index');
-
     }
 
     /**

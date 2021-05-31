@@ -14,7 +14,7 @@
           @endif
         </h3>
 
-        <img src="{{asset('storage/'.$post->cover)}}" alt="{{$post->title}}">
+        <img src="{{asset($post->cover)}}" alt="{{$post->title}}">
 
         <div class="card-body">
           {{$post->content}}
