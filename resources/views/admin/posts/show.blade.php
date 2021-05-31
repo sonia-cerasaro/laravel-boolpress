@@ -13,9 +13,11 @@
           {{$post->category->name}}
           @endif
         </h3>
+
+        <img src="{{asset('storage/'.$post->cover)}}" alt="{{$post->title}}">
+
         <div class="card-body">
           {{$post->content}}
-
           <a href="{{route('admin.posts.index')}}">
             Back
           </a>

@@ -10,6 +10,7 @@ class Post extends Model
     'title',
     'content',
     'slug',
+    'cover',
     'category_id',
   ];
 
@@ -17,5 +18,4 @@ class Post extends Model
   {
     return $this->belongsTo('App\Category');
   }
-
 }

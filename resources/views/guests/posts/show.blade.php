@@ -6,12 +6,12 @@
     <div class="col-md-3">
       <div class="card">
         <div class="card-header">
-          {{ $post->title}}
+          {{ $post->title }}
         </div>
         <h3>Category:
           @if ($post->category)
           <a href="{{route('category.index', ['slug' => $post->category->slug])}}">
-          {{$post->category->name}}</a>
+          {{$post->category->name }}</a>
           @endif
         </h3>
         <div class="card-body">

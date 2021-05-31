@@ -28,7 +28,7 @@
                       Show
                     </a>
                   </div>
-                  <form class="" action="{{route('admin.categories.destroy', ['category'=>$category->id])}}" method="POST" style="display:none">
+                  <form class="" action="{{route('admin.categories.destroy', ['category'=> $category->id])}}" method="POST" style="display:none">
                     @csrf
                     @method('DELETE')
                     <input type="submit" value="delete">

@@ -7,11 +7,11 @@
     <div class="col-md-3">
       <div class="card">
         <div class="card-header">
-          {{ $post->title}}
+          {{ $post->title }}
         </div>
         <div class="card-body">
-          {{$post->content}}
-          <a href=" {{route('posts.show', ['slug =>$post->slug'])}} ">
+          {{$post->content }}
+          <a href=" {{route('posts.show', ['slug' =>$post->slug ])}} ">
             Read More
           </a>
         </div>
