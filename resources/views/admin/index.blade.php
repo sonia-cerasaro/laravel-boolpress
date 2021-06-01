@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <a href="{{route('admin.posts.index')}}"> Visualizza Post</a>
                 <a href="{{route('admin.categories.index')}}"> Categories </a>
+                <a href="{{route('admin.tags.index')}}"> Tags </a>
 
                 <div class="card-body">
                     @if (session('status'))

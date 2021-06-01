@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3>
-        New Category
+        Change Tag
       </h3>
     </div>
   </div>
@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-          <form action="{{route('admin.categories.update', ['category' => $category->id])}}" method="post">
+          <form action="{{route('admin.tags.update', ['tag' => $tag->id])}}" method="post">
             @csrf
             @method('PATCH')
 
@@ -21,7 +21,7 @@
               <label for="name">
                 name
               </label>
-              <input class="form-control @error('name') is-invalid @enderror" id="name" type="text" name="name" value="{{ old('name', $category->name) }}">
+              <input class="form-control @error('name') is-invalid @enderror" id="name" type="text" name="name" value="{{ old('name', $tag->name) }}">
               @error('name')
                 <small class="text-danger">
                   {{ $message }}

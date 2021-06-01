@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3>
-        New Category
+        Change Category
       </h3>
     </div>
   </div>

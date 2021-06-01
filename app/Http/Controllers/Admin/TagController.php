@@ -6,6 +6,8 @@ use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Str;
+
 class TagController extends Controller
 {
     /**
@@ -27,7 +29,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.tags.create');
     }
 
     /**
@@ -38,7 +40,17 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+        'name' => 'required|string|max:255',
+      ]);
+
+      $data = $request->all();
+      $data['slug'] = $this->generateSlug($data['name']);
+
+      $tag = new Tag();
+      $tag->create($data);
+
+      return redirect()->route('admin.tags.index');
     }
 
     /**
@@ -49,7 +61,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+      return view('admin.tags.show', compact('tag'));
     }
 
     /**
@@ -60,7 +72,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+      return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -72,7 +84,17 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+      $request->validate([
+        'name' => 'required|string|max:255',
+      ]);
+
+      $data = $request->all();
+      $data['slug'] = $this->generateSlug($data['name'], $data['name'] != $tag->name, $tag->slug);
+
+
+      $tag->update($data);
+
+      return redirect()->route('admin.tags.index');
     }
 
     /**
@@ -83,6 +105,30 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+      $tag->delete();
+
+      return redirect()->route('admin.tags.index');
+    }
+
+    private function generateSlug(string $title, bool $change = true, string $old_slug = '')
+    {
+
+      if (!$change) {
+        return $old_slug;
+      }
+
+      $slug = Str::slug($title, '-');
+
+      $slug_base = $slug;
+      $contatore = 1;
+
+      $post_with_slug = Tag::where('slug', '=', $slug)->first();
+      while($post_with_slug) {
+        $slug = $slug_base . '_' . $contatore;
+        $contatore++;
+
+      $post_with_slug = Tag::where('slug', '=', $slug)->first();
+      }
+      return $slug;
     }
 }

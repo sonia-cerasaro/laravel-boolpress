@@ -32,7 +32,7 @@
         <label for="name">
           Nome
         </label>
-        <input class="form-control @error('name') is-invalid @enderror" id="name" type="text" name="title" value="{{ old('name') }}">
+        <input class="form-control @error('name') is-invalid @enderror" id="name" type="text" name="name" value="{{ old('name') }}">
         @error('name')
           <small class="text-danger">
             {{ $message }}
@@ -56,10 +56,10 @@
         <label for="email">
           Email
         </label>
-        <textarea class="form-control @error('Email') is-invalid @enderror" id="Email" name="Email">
-          {{ old('Email') }}
+        <textarea class="form-control @error('email') is-invalid @enderror" id="email" name="email">
+          {{ old('email') }}
         </textarea>
-        @error('Email')
+        @error('email')
           <small class="text-danger">
             {{ $message }}
           </small>

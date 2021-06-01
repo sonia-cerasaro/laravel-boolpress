@@ -4,31 +4,31 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <a href="{{route('admin.categories.create')}}">
-        New Category
+      <a href="{{route('admin.tags.create')}}">
+        New tag
       </a>
     </div>
   </div>
     <div class="row justify-content-center">
-      @foreach ($categories as $category)
+      @foreach ($tags as $tag)
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">
-                  {{$category->name}}
+                  {{$tag->name}}
                 </div>
                 <div class="card-body">
 
                   <div class="">
-                    <a href="{{route('admin.categories.edit', ['category' => $category->id])}}">
+                    <a href="{{route('admin.tags.edit', ['tag' => $tag->id])}}">
                       Edit
                     </a>
                   </div>
                   <div class="">
-                    <a href="{{route('admin.categories.show', ['category' => $category->id])}}">
+                    <a href="{{route('admin.tags.show', ['tag' => $tag->id])}}">
                       Show
                     </a>
                   </div>
-                  <form class="" action="{{route('admin.categories.destroy', ['category'=> $category->id])}}" method="POST" style="display:none">
+                  <form class="" action="{{route('admin.tags.destroy', ['tag'=> $tag->id])}}" method="POST" style="display:none">
                     @csrf
                     @method('DELETE')
                     <input type="submit" value="delete">

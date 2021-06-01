@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3>
-        New Post
+        New category
       </h3>
     </div>
   </div>
